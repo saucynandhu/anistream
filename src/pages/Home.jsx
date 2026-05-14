@@ -180,7 +180,7 @@ export function Home() {
         ) : topLoading && topRated.length === 0 ? (
            <SkeletonCard />
          ) : (
-           <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin snap-x snap-mandatory">
+           <div className="grid grid-cols-2 gap-3 sm:flex sm:gap-4 sm:overflow-x-auto sm:pb-2 sm:scrollbar-thin sm:snap-x sm:snap-mandatory">
              {topRated.map((a) => (
                <AnimeCard
                  key={a._id}
@@ -232,7 +232,7 @@ export function Home() {
             ) : genreLoading && genreItems.length === 0 ? (
                <SkeletonCard count={6} />
              ) : (
-               <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin snap-x snap-mandatory">
+               <div className="grid grid-cols-2 gap-3 sm:flex sm:gap-4 sm:overflow-x-auto sm:pb-2 sm:scrollbar-thin sm:snap-x sm:snap-mandatory">
                  {genreItems.map((a) => (
                    <AnimeCard
                      key={a._id}
