@@ -63,6 +63,8 @@ After deploy, open DevTools → Network and confirm API calls go to **`/anipub-a
 
 Pushes and pull requests targeting **`main`** or **`master`** run **`npm ci`** and **`npm run build`** (`.github/workflows/ci.yml`).
 
+**In-app dev notes:** The UI exposes **`/dev`** (linked from the footer) with a concise technical summary: stack, proxy, env, and known API quirks — useful when sharing the live site without opening the repo.
+
 ## Scripts
 
 - `npm run dev` — Vite dev server (includes `/anipub-api` proxy)
@@ -89,6 +91,7 @@ src/
     VideoPlayer.jsx
     SkeletonCard.jsx
     Layout.jsx
+    SiteFooter.jsx
     UiState.jsx
   pages/
     Home.jsx
@@ -96,6 +99,7 @@ src/
     WatchPage.jsx
     SearchPage.jsx
     GenrePage.jsx
+    DevNotesPage.jsx
   router.jsx          # createBrowserRouter route table
   main.jsx            # React bootstrap + RouterProvider
   index.css           # Tailwind entry + small global polish

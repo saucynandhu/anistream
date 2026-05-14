@@ -2,12 +2,13 @@
  * Application shell: sticky header, main outlet, and subtle page transitions.
  *
  * @file Wraps all routes with consistent navigation chrome.
- * @imports react-router-dom Outlet/Link/useLocation, SearchBar
+ * @imports react-router-dom Outlet/Link/useLocation, SearchBar, SiteFooter
  * @exports RootLayout component
  * @gotchas `location.pathname` keys the transition wrapper to re-trigger CSS animation.
  */
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { SearchBar } from './SearchBar';
+import { SiteFooter } from './SiteFooter.jsx';
 
 /**
  * @returns {JSX.Element}
@@ -41,9 +42,7 @@ export function RootLayout() {
         </div>
       </main>
 
-      <footer className="border-t border-surface-border py-10 text-center text-xs text-zinc-600">
-        Data and streams are provided by third-party APIs; AniStream is a non-commercial UI demo.
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
