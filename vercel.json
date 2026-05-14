@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/anipub-api/:path*",
+      "destination": "https://anipub.xyz/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

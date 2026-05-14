@@ -1,0 +1,41 @@
+/**
+ * Global styles for AniStream (Tailwind layers + scrollbar polish).
+ *
+ * @file Tailwind base/components/utilities and small global tweaks.
+ * @imports tailwind directives
+ * @exports none (side-effect stylesheet)
+ * @gotchas Keep custom CSS minimal; prefer Tailwind utilities in components.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply min-h-dvh bg-surface text-zinc-100;
+  }
+  ::selection {
+    @apply bg-accent/30 text-white;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #3f3f46 transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-zinc-700/80;
+  }
+}
+
+.page-transition {
+  animation: fadeIn 0.35s ease-out both;
+}
