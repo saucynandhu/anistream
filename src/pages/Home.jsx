@@ -102,7 +102,7 @@ export function Home() {
   const heroScore = hero ? String(hero.MALScore ?? '—') : '—';
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-8">
       <section className="overflow-hidden rounded-3xl border border-surface-border bg-gradient-to-br from-surface-raised via-surface to-black" aria-label="Featured anime">
         <div className="grid gap-0 md:grid-cols-[1.15fr_0.85fr]">
           <div className="relative min-h-[220px] p-8 md:min-h-[320px]">
@@ -155,8 +155,8 @@ export function Home() {
         </div>
       </section>
 
-      <section className="space-y-3">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
+      <section className="space-y-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
           <div>
             <h2 className="text-lg font-semibold text-white">Top rated</h2>
             <p className="text-sm text-zinc-500">Curated by community scores</p>
@@ -165,7 +165,7 @@ export function Home() {
              type="button"
              disabled={topLoading || !topHasMore}
              onClick={() => loadTop(topPage + 1, true)}
-             className="hidden sm:block rounded-xl border border-surface-border bg-surface-raised px-3 py-2 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+             className="hidden sm:block rounded-xl border border-surface-border bg-surface-raised px-4 py-2.5 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
            >
              Load more
            </button>
@@ -196,7 +196,7 @@ export function Home() {
                type="button"
                disabled={topLoading || !topHasMore}
                onClick={() => loadTop(topPage + 1, true)}
-               className="sm:hidden w-full rounded-xl border border-surface-border bg-surface-raised px-3 py-2 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+               className="sm:hidden w-full rounded-xl border border-surface-border bg-surface-raised px-4 py-2.5 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
              >
                Load more
              </button>
@@ -212,8 +212,8 @@ export function Home() {
         <GenrePills activeGenre={activeGenre} onSelect={onSelectGenre} />
 
         {activeGenre ? (
-           <div className="space-y-3">
-             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
+           <div className="space-y-4">
+             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
                <h3 className="text-sm font-semibold text-zinc-200">{activeGenre}</h3>
                <div className="flex items-center gap-2">
                 <Link
@@ -226,7 +226,7 @@ export function Home() {
                     type="button"
                     disabled={genreLoading || !genreHasMore}
                     onClick={() => loadGenre(activeGenre, genrePage + 1, true)}
-                    className="hidden sm:block rounded-xl border border-surface-border bg-surface-raised px-3 py-2 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    className="hidden sm:block rounded-xl border border-surface-border bg-surface-raised px-4 py-2.5 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   >
                     More
                   </button>
@@ -258,7 +258,7 @@ export function Home() {
                     type="button"
                     disabled={genreLoading || !genreHasMore}
                     onClick={() => loadGenre(activeGenre, genrePage + 1, true)}
-                    className="sm:hidden w-full rounded-xl border border-surface-border bg-surface-raised px-3 py-2 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    className="sm:hidden w-full rounded-xl border border-surface-border bg-surface-raised px-4 py-2.5 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   >
                     More
                   </button>

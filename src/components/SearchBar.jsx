@@ -129,7 +129,7 @@ export function SearchBar({ className = '' }) {
              type="button"
              onClick={submit}
              aria-label="Search anime"
-             className="rounded-lg bg-accent px-3 py-1 text-xs font-semibold text-white hover:bg-rose-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:ring-offset-surface-raised"
+             className="rounded-lg bg-accent px-4 py-1.5 text-xs font-semibold text-white hover:bg-rose-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:ring-offset-surface-raised"
            >
              Search
            </button>

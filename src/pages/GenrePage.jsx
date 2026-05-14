@@ -71,24 +71,24 @@ export function GenrePage() {
           <h1 className="text-2xl font-semibold tracking-tight text-white">{decoded}</h1>
           <p className="text-sm text-zinc-500">Page {page}</p>
         </div>
-        <div className="flex gap-2">
-          <button
-            type="button"
-            disabled={page <= 1 || loading}
-            onClick={() => goPage(page - 1)}
-            className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2 text-sm font-semibold text-zinc-200 hover:border-zinc-600 disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-          >
-            Previous
-          </button>
-          <button
-            type="button"
-            disabled={loading || items.length === 0}
-            onClick={() => goPage(page + 1)}
-            className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2 text-sm font-semibold text-zinc-200 hover:border-zinc-600 disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-          >
-            Next
-          </button>
-        </div>
+        <div className="flex gap-3">
+           <button
+             type="button"
+             disabled={page <= 1 || loading}
+             onClick={() => goPage(page - 1)}
+             className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2.5 text-sm font-semibold text-zinc-200 hover:border-zinc-600 disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+           >
+             Previous
+           </button>
+           <button
+             type="button"
+             disabled={loading || items.length === 0}
+             onClick={() => goPage(page + 1)}
+             className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2.5 text-sm font-semibold text-zinc-200 hover:border-zinc-600 disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+           >
+             Next
+           </button>
+         </div>
       </div>
 
       {error ? (

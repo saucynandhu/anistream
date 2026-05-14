@@ -51,7 +51,7 @@ function AnimeCardComponent({ id, title, image, malScore }) {
             {score}
           </div>
         </div>
-        <div className="flex-shrink-0 flex items-center rounded-b-xl border border-t-0 border-surface-border bg-surface-raised px-3 py-2 h-[52px] sm:h-[60px]">
+        <div className="flex-shrink-0 flex items-center rounded-b-xl border border-t-0 border-surface-border bg-surface-raised px-4 py-2.5 h-[52px] sm:h-[60px]">
           <p className="line-clamp-2 text-xs sm:text-sm font-medium leading-snug text-zinc-100">
             {title}
           </p>

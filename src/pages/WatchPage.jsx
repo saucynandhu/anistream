@@ -125,12 +125,12 @@ export function WatchPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-xl font-semibold tracking-tight text-white">
             {String(local.Name || local.name || 'Watching')}
           </h1>
-          <p className="text-sm text-zinc-500">
+          <p className="mt-1 text-sm text-zinc-500">
             Episode {epNum}
             {total ? <span className="text-zinc-600"> / {total}</span> : null}
           </p>
@@ -140,7 +140,7 @@ export function WatchPage() {
             type="button"
             disabled={!canPrev}
             onClick={() => goEpisode(epNum - 1)}
-            className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2 text-sm font-semibold text-zinc-200 hover:border-zinc-600 disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2.5 text-sm font-semibold text-zinc-200 hover:border-zinc-600 disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             Previous
           </button>
@@ -148,14 +148,14 @@ export function WatchPage() {
             type="button"
             disabled={!canNext}
             onClick={() => goEpisode(epNum + 1)}
-            className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2 text-sm font-semibold text-zinc-200 hover:border-zinc-600 disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2.5 text-sm font-semibold text-zinc-200 hover:border-zinc-600 disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             Next
           </button>
           {id ? (
             <Link
               to={`/anime/${id}`}
-              className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2 text-sm font-semibold text-zinc-200 hover:border-zinc-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2.5 text-sm font-semibold text-zinc-200 hover:border-zinc-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Details
             </Link>
@@ -166,10 +166,10 @@ export function WatchPage() {
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <VideoPlayer key={iframeSrc || 'empty'} src={iframeSrc} title={`Episode ${epNum}`} />
 
-        <aside className="space-y-3">
-          <div className="rounded-2xl border border-surface-border bg-surface-raised p-3">
+        <aside className="space-y-4">
+          <div className="rounded-2xl border border-surface-border bg-surface-raised p-4">
             <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">Episodes</p>
-            <div className="mt-3 max-h-[320px] overflow-auto pr-1 scrollbar-thin lg:max-h-[520px]">
+            <div className="mt-4 max-h-[320px] overflow-auto pr-1 scrollbar-thin lg:max-h-[520px]">
               <div className="grid grid-cols-6 gap-2 sm:grid-cols-8 lg:grid-cols-4">
                 {Array.from({ length: Math.max(total, epNum) }).map((_, idx) => {
                   const n = idx + 1;

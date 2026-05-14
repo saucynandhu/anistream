@@ -29,7 +29,7 @@ export function SkeletonCard({ count = 8 }) {
               style={{ backgroundSize: '200% 100%' }}
               aria-hidden
             />
-            <div className="flex-shrink-0 h-[52px] sm:h-[60px] px-3 py-2 flex items-center rounded-b-xl bg-zinc-800/50">
+            <div className="flex-shrink-0 h-[52px] sm:h-[60px] px-4 py-2.5 flex items-center rounded-b-xl bg-zinc-800/50">
               <div className="h-3 w-3/4 rounded bg-zinc-700" aria-hidden />
             </div>
           </div>

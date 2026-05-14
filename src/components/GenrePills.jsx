@@ -41,7 +41,7 @@ export function GenrePills({ activeGenre, onSelect }) {
              aria-pressed={active}
              aria-label={`${g} genre${active ? ' (selected)' : ''}`}
              className={[
-               'rounded-full border px-3 py-2 text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+               'rounded-full border px-4 py-2.5 text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
                active
                  ? 'border-accent bg-accent/15 text-accent-muted'
                  : 'border-surface-border bg-surface-raised text-zinc-300 hover:border-zinc-600',

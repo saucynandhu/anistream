@@ -107,7 +107,7 @@ export function AnimePage() {
   const castRows = Array.isArray(characters) ? characters : [];
 
   return (
-    <article className="space-y-8">
+    <article className="space-y-6">
       <div className="overflow-hidden rounded-3xl border border-surface-border">
         <div className="relative h-44 w-full bg-zinc-950 sm:h-56">
           {banner ? (
@@ -137,7 +137,7 @@ export function AnimePage() {
                <button
                    type="button"
                    onClick={() => toggleWatchlist(String(id))}
-                   className="rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs font-semibold text-white backdrop-blur hover:border-white/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                   className="rounded-full border border-white/10 bg-black/40 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur hover:border-white/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                  >
                    {inList ? 'Saved' : 'Watchlist'}
                  </button>
@@ -151,7 +151,7 @@ export function AnimePage() {
                 <Link
                   key={g}
                   to={`/genre/${encodeURIComponent(g)}?page=1`}
-                  className="rounded-full border border-surface-border bg-surface-raised px-3 py-1 text-xs text-zinc-200 hover:border-zinc-600"
+                  className="rounded-full border border-surface-border bg-surface-raised px-3 py-1.5 text-xs text-zinc-200 hover:border-zinc-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
                 >
                   {g}
                 </Link>
@@ -163,16 +163,16 @@ export function AnimePage() {
 
       <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
         <div className="space-y-6">
-          <section className="rounded-2xl border border-surface-border bg-surface-raised p-5">
+          <section className="rounded-2xl border border-surface-border bg-surface-raised p-4">
             <h2 className="text-sm font-semibold text-zinc-200">Synopsis</h2>
-            <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-zinc-400">
+            <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-zinc-400">
               {String(detail.DescripTion || detail.Description || 'No synopsis available.')}
             </p>
           </section>
 
-          <section className="rounded-2xl border border-surface-border bg-surface-raised p-5">
+          <section className="rounded-2xl border border-surface-border bg-surface-raised p-4">
             <h2 className="text-sm font-semibold text-zinc-200">Production</h2>
-            <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+            <dl className="mt-4 grid gap-4 text-sm sm:grid-cols-2">
               <div>
                 <dt className="text-xs uppercase tracking-wide text-zinc-500">Studios</dt>
                 <dd className="mt-1 text-zinc-200">{String(detail.Studios || '—')}</dd>
@@ -192,7 +192,7 @@ export function AnimePage() {
             </dl>
           </section>
 
-          <section className="rounded-2xl border border-surface-border bg-surface-raised p-5">
+          <section className="rounded-2xl border border-surface-border bg-surface-raised p-4">
             <div className="flex items-start justify-between gap-4">
               <h2 className="text-sm font-semibold text-zinc-200">Cast</h2>
               <p className="max-w-md text-right text-xs text-zinc-500">
@@ -201,7 +201,7 @@ export function AnimePage() {
               </p>
             </div>
 
-            <div className="mt-4 space-y-3">
+            <div className="mt-4 space-y-4">
               {/* FIXME: Upstream occasionally returns mismatched `characters[]` vs `local` (e.g. unrelated cast rows while the poster/title are correct). */}
               {castRows.length === 0 ? (
                 <p className="text-sm text-zinc-500">No cast information.</p>
@@ -241,7 +241,7 @@ export function AnimePage() {
           {id ? (
             <Link
               to={`/watch/${id}/${Math.max(1, lastWatched || 1)}`}
-              className="block rounded-2xl bg-accent px-4 py-3 text-center text-sm font-semibold text-white hover:bg-rose-600"
+              className="block rounded-2xl bg-accent px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-rose-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
             >
               Resume / Play
             </Link>

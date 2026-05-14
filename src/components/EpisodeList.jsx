@@ -21,8 +21,8 @@ export function EpisodeList({ animeId, episodeCount, initialHighlight }) {
   const safeCount = Number.isFinite(episodeCount) ? Math.max(0, Math.floor(episodeCount)) : 0;
 
   return (
-    <div className="rounded-2xl border border-surface-border bg-surface-raised p-3">
-      <div className="mb-2 flex items-center justify-between">
+    <div className="rounded-2xl border border-surface-border bg-surface-raised p-4">
+      <div className="mb-3 flex items-center justify-between">
         <h3 className="text-sm font-semibold text-zinc-200">Episodes</h3>
         <span className="text-xs text-zinc-500">{safeCount} total</span>
       </div>
