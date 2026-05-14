@@ -140,7 +140,7 @@ export function WatchPage() {
             type="button"
             disabled={!canPrev}
             onClick={() => goEpisode(epNum - 1)}
-            className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2 text-sm font-semibold text-zinc-200 hover:border-zinc-600 disabled:opacity-40"
+            className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2 text-sm font-semibold text-zinc-200 hover:border-zinc-600 disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             Previous
           </button>
@@ -148,14 +148,14 @@ export function WatchPage() {
             type="button"
             disabled={!canNext}
             onClick={() => goEpisode(epNum + 1)}
-            className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2 text-sm font-semibold text-zinc-200 hover:border-zinc-600 disabled:opacity-40"
+            className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2 text-sm font-semibold text-zinc-200 hover:border-zinc-600 disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
             Next
           </button>
           {id ? (
             <Link
               to={`/anime/${id}`}
-              className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2 text-sm font-semibold text-zinc-200 hover:border-zinc-600"
+              className="rounded-xl border border-surface-border bg-surface-raised px-4 py-2 text-sm font-semibold text-zinc-200 hover:border-zinc-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               Details
             </Link>
@@ -175,19 +175,19 @@ export function WatchPage() {
                   const n = idx + 1;
                   const active = n === epNum;
                   return (
-                    <button
-                      key={n}
-                      type="button"
-                      onClick={() => goEpisode(n)}
-                      className={[
-                        'rounded-lg border px-2 py-2 text-xs font-semibold transition',
-                        active
-                          ? 'border-accent bg-accent/15 text-accent-muted'
-                          : 'border-surface-border bg-surface text-zinc-200 hover:border-zinc-600',
-                      ].join(' ')}
-                    >
-                      {n}
-                    </button>
+                   <button
+                       key={n}
+                       type="button"
+                       onClick={() => goEpisode(n)}
+                       className={[
+                         'flex items-center justify-center rounded-lg border px-2 py-2 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent min-h-[32px]',
+                         active
+                           ? 'border-accent bg-accent/15 text-accent-muted'
+                           : 'border-surface-border bg-surface text-zinc-200 hover:border-zinc-600',
+                       ].join(' ')}
+                     >
+                       {n}
+                     </button>
                   );
                 })}
               </div>

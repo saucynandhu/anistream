@@ -2,11 +2,12 @@
  * Scrollable episode list for anime detail pages.
  *
  * @file Renders numbered buttons linking into the watch route.
- * @imports react-router-dom useNavigate
+ * @imports react-router-dom useNavigate, PropTypes
  * @exports EpisodeList component
  * @gotchas Episode count should mirror streaming payload when possible; detail `epCount` may differ.
  */
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 /**
  * @param {Object} props
@@ -32,18 +33,19 @@ export function EpisodeList({ animeId, episodeCount, initialHighlight }) {
             const active = initialHighlight === ep;
             return (
               <button
-                key={ep}
-                type="button"
-                onClick={() => navigate(`/watch/${animeId}/${ep}`)}
-                className={[
-                  'rounded-lg border px-2 py-2 text-xs font-semibold transition',
-                  active
-                    ? 'border-accent bg-accent/15 text-accent-muted'
-                    : 'border-surface-border bg-surface text-zinc-200 hover:border-zinc-600',
-                ].join(' ')}
-              >
-                {ep}
-              </button>
+                 key={ep}
+                 type="button"
+                 onClick={() => navigate(`/watch/${animeId}/${ep}`)}
+                 aria-label={`Episode ${ep}${active ? ' (current)' : ''}`}
+                 className={[
+                   'flex items-center justify-center rounded-lg border px-3 py-2 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent min-h-[32px]',
+                   active
+                     ? 'border-accent bg-accent/15 text-accent-muted'
+                     : 'border-surface-border bg-surface text-zinc-200 hover:border-zinc-600',
+                 ].join(' ')}
+               >
+                 {ep}
+               </button>
             );
           })}
         </div>
@@ -51,3 +53,9 @@ export function EpisodeList({ animeId, episodeCount, initialHighlight }) {
     </div>
   );
 }
+
+EpisodeList.propTypes = {
+  animeId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  episodeCount: PropTypes.number.isRequired,
+  initialHighlight: PropTypes.number,
+};

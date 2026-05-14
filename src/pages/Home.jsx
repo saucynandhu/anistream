@@ -103,12 +103,12 @@ export function Home() {
 
   return (
     <div className="space-y-10">
-      <section className="overflow-hidden rounded-3xl border border-surface-border bg-gradient-to-br from-surface-raised via-surface to-black">
+      <section className="overflow-hidden rounded-3xl border border-surface-border bg-gradient-to-br from-surface-raised via-surface to-black" aria-label="Featured anime">
         <div className="grid gap-0 md:grid-cols-[1.15fr_0.85fr]">
           <div className="relative min-h-[220px] p-8 md:min-h-[320px]">
             <div className="absolute inset-0 opacity-40">
               {heroImg ? (
-                <img src={heroImg} alt="" className="h-full w-full object-cover blur-2xl" />
+                <img src={heroImg} alt="" aria-hidden className="h-full w-full object-cover blur-2xl" />
               ) : (
                 <div className="h-full w-full bg-zinc-900" />
               )}
@@ -127,7 +127,7 @@ export function Home() {
                 {hero?._id ? (
                   <Link
                     to={`/anime/${hero._id}`}
-                    className="rounded-full bg-accent px-4 py-2 text-xs font-semibold text-white hover:bg-rose-600"
+                    className="rounded-full bg-accent px-4 py-2 text-xs font-semibold text-white hover:bg-rose-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                   >
                     View details
                   </Link>
@@ -135,7 +135,7 @@ export function Home() {
                 {hero?._id ? (
                   <Link
                     to={`/watch/${hero._id}/1`}
-                    className="rounded-full border border-white/15 px-4 py-2 text-xs font-semibold text-white hover:border-white/30"
+                    className="rounded-full border border-white/15 px-4 py-2 text-xs font-semibold text-white hover:border-white/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   >
                     Watch now
                   </Link>
@@ -145,7 +145,7 @@ export function Home() {
           </div>
           <div className="relative hidden border-t border-surface-border md:block md:border-l md:border-t-0">
             {heroImg ? (
-              <img src={heroImg} alt="" className="h-full w-full object-cover" />
+              <img src={heroImg} alt={`${hero?.Name || 'Featured anime'} poster`} className="h-full w-full object-cover" />
             ) : (
               <div className="flex h-full min-h-[260px] items-center justify-center bg-zinc-950 text-sm text-zinc-600">
                 Poster
@@ -162,13 +162,13 @@ export function Home() {
             <p className="text-sm text-zinc-500">Curated by community scores</p>
           </div>
           <button
-            type="button"
-            disabled={topLoading || !topHasMore}
-            onClick={() => loadTop(topPage + 1, true)}
-            className="rounded-xl border border-surface-border bg-surface-raised px-3 py-2 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            Load more
-          </button>
+             type="button"
+             disabled={topLoading || !topHasMore}
+             onClick={() => loadTop(topPage + 1, true)}
+             className="rounded-xl border border-surface-border bg-surface-raised px-3 py-2 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+           >
+             Load more
+           </button>
         </div>
 
         {topError ? (
@@ -178,20 +178,20 @@ export function Home() {
             onRetry={() => loadTop(1, false)}
           />
         ) : topLoading && topRated.length === 0 ? (
-          <SkeletonCard />
-        ) : (
-          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin">
-            {topRated.map((a) => (
-              <AnimeCard
-                key={a._id}
-                id={a._id}
-                title={a.Name}
-                image={a.ImagePath || a.Cover || a.Image}
-                malScore={a.MALScore}
-              />
-            ))}
-          </div>
-        )}
+           <SkeletonCard />
+         ) : (
+           <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin snap-x snap-mandatory">
+             {topRated.map((a) => (
+               <AnimeCard
+                 key={a._id}
+                 id={a._id}
+                 title={a.Name}
+                 image={a.ImagePath || a.Cover || a.Image}
+                 malScore={a.MALScore}
+               />
+             ))}
+           </div>
+         )}
       </section>
 
       <section className="space-y-4">
@@ -206,20 +206,20 @@ export function Home() {
             <div className="flex items-end justify-between gap-4">
               <h3 className="text-sm font-semibold text-zinc-200">{activeGenre}</h3>
               <div className="flex items-center gap-2">
-                <Link
-                  to={`/genre/${encodeURIComponent(activeGenre)}?page=1`}
-                  className="text-xs font-semibold text-accent-muted hover:text-accent"
-                >
-                  Open grid
-                </Link>
-                <button
-                  type="button"
-                  disabled={genreLoading || !genreHasMore}
-                  onClick={() => loadGenre(activeGenre, genrePage + 1, true)}
-                  className="rounded-xl border border-surface-border bg-surface-raised px-3 py-2 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40"
-                >
-                  More
-                </button>
+               <Link
+                   to={`/genre/${encodeURIComponent(activeGenre)}?page=1`}
+                   className="text-xs font-semibold text-accent-muted hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded px-1"
+                 >
+                   Open grid
+                 </Link>
+                 <button
+                   type="button"
+                   disabled={genreLoading || !genreHasMore}
+                   onClick={() => loadGenre(activeGenre, genrePage + 1, true)}
+                   className="rounded-xl border border-surface-border bg-surface-raised px-3 py-2 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                 >
+                   More
+                 </button>
               </div>
             </div>
 
@@ -230,20 +230,20 @@ export function Home() {
                 onRetry={() => loadGenre(activeGenre, 1, false)}
               />
             ) : genreLoading && genreItems.length === 0 ? (
-              <SkeletonCard count={6} />
-            ) : (
-              <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin">
-                {genreItems.map((a) => (
-                  <AnimeCard
-                    key={a._id}
-                    id={a._id}
-                    title={a.Name}
-                    image={a.ImagePath || a.Image}
-                    malScore={a.MALScore}
-                  />
-                ))}
-              </div>
-            )}
+               <SkeletonCard count={6} />
+             ) : (
+               <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin snap-x snap-mandatory">
+                 {genreItems.map((a) => (
+                   <AnimeCard
+                     key={a._id}
+                     id={a._id}
+                     title={a.Name}
+                     image={a.ImagePath || a.Image}
+                     malScore={a.MALScore}
+                   />
+                 ))}
+               </div>
+             )}
           </div>
         ) : null}
       </section>

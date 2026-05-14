@@ -107,11 +107,11 @@ export function AnimePage() {
   const castRows = Array.isArray(characters) ? characters : [];
 
   return (
-    <div className="space-y-8">
+    <article className="space-y-8">
       <div className="overflow-hidden rounded-3xl border border-surface-border">
         <div className="relative h-44 w-full bg-zinc-950 sm:h-56">
           {banner ? (
-            <img src={banner} alt="" className="h-full w-full object-cover opacity-70" />
+            <img src={banner} alt={`${detail.Name} banner`} className="h-full w-full object-cover opacity-70" />
           ) : null}
           <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/40 to-transparent" />
         </div>
@@ -120,7 +120,7 @@ export function AnimePage() {
           <div className="w-[140px] shrink-0 overflow-hidden rounded-2xl border border-surface-border bg-surface-raised shadow-card sm:w-[170px]">
             <div className="aspect-[2/3] w-full bg-zinc-900">
               {poster ? (
-                <img src={poster} alt="" className="h-full w-full object-cover" />
+                <img src={poster} alt={`${detail.Name} poster`} className="h-full w-full object-cover" />
               ) : null}
             </div>
           </div>
@@ -134,13 +134,13 @@ export function AnimePage() {
                 {String(detail.Status ?? 'Unknown')}
               </span>
               {id ? (
-                <button
-                  type="button"
-                  onClick={() => toggleWatchlist(String(id))}
-                  className="rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs font-semibold text-white backdrop-blur hover:border-white/25"
-                >
-                  {inList ? 'Saved' : 'Watchlist'}
-                </button>
+               <button
+                   type="button"
+                   onClick={() => toggleWatchlist(String(id))}
+                   className="rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs font-semibold text-white backdrop-blur hover:border-white/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                 >
+                   {inList ? 'Saved' : 'Watchlist'}
+                 </button>
               ) : null}
             </div>
             <h1 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
@@ -248,6 +248,6 @@ export function AnimePage() {
           ) : null}
         </div>
       </div>
-    </div>
+    </article>
   );
 }

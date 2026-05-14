@@ -2,13 +2,14 @@
  * Full-width 16:9 iframe player with a loading skeleton state.
  *
  * @file Embeds third-party streaming iframes from AniPub-normalized URLs.
- * @imports react
+ * @imports react, PropTypes
  * @exports VideoPlayer component
  * @gotchas
  * - Some providers may block embedding based on Referrer-Policy / X-Frame-Options; this cannot be fixed purely client-side.
  * - If playback fails silently, check the browser console network tab for the iframe document response.
  */
 import { useMemo, useState } from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * @param {Object} props
@@ -53,3 +54,8 @@ export function VideoPlayer({ src, title = 'Episode player' }) {
     </div>
   );
 }
+
+VideoPlayer.propTypes = {
+  src: PropTypes.string.isRequired,
+  title: PropTypes.string,
+};

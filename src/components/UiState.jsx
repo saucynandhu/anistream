@@ -2,10 +2,11 @@
  * Friendly error / empty state with optional retry action.
  *
  * @file Used across pages to avoid blank screens on API failures.
- * @imports none
+ * @imports PropTypes
  * @exports UiState component
  * @gotchas Keep copy calm; this is user-facing recovery UI.
  */
+import PropTypes from 'prop-types';
 
 /**
  * @param {Object} props
@@ -25,7 +26,7 @@ export function UiState({ title, description, onRetry }) {
         <button
           type="button"
           onClick={onRetry}
-          className="mt-5 inline-flex items-center justify-center rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-rose-600"
+          className="mt-5 inline-flex items-center justify-center rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-rose-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-raised"
         >
           Try again
         </button>
@@ -33,3 +34,9 @@ export function UiState({ title, description, onRetry }) {
     </div>
   );
 }
+
+UiState.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  onRetry: PropTypes.func,
+};

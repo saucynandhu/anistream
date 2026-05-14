@@ -2,12 +2,13 @@
  * Header search with debounced suggestions and navigation to full results.
  *
  * @file Uses `fetchSearchSuggestions` only; full results live on `/search`.
- * @imports react, react-router-dom, ../lib/api, ../store/useAppStore
+ * @imports react, react-router-dom, ../lib/api, ../store/useAppStore, PropTypes
  * @exports SearchBar component
  * @gotchas Clicking outside closes the dropdown; Enter submits to `/search?q=`.
  */
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { fetchSearchSuggestions } from '../lib/api';
 import { useAppStore } from '../store/useAppStore';
 
@@ -122,16 +123,17 @@ export function SearchBar({ className = '' }) {
           autoComplete="off"
         />
         {loading ? (
-          <span className="text-xs text-zinc-500">…</span>
-        ) : (
-          <button
-            type="button"
-            onClick={submit}
-            className="rounded-lg bg-accent px-3 py-1 text-xs font-semibold text-white hover:bg-rose-600"
-          >
-            Search
-          </button>
-        )}
+           <span className="text-xs text-zinc-500">…</span>
+         ) : (
+           <button
+             type="button"
+             onClick={submit}
+             aria-label="Search anime"
+             className="rounded-lg bg-accent px-3 py-1 text-xs font-semibold text-white hover:bg-rose-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1 focus-visible:ring-offset-surface-raised"
+           >
+             Search
+           </button>
+         )}
       </div>
 
       {showDropdown ? (
@@ -145,11 +147,10 @@ export function SearchBar({ className = '' }) {
               {items.map((it) => (
                 <li key={it.Id}>
                   <button
-                    type="button"
-                    className="flex w-full items-center gap-3 px-3 py-2 text-left text-sm hover:bg-zinc-900"
-                    onMouseDown={(e) => e.preventDefault()}
-                    onClick={() => goAnime(it.Id)}
-                  >
+                     type="button"
+                     className="flex w-full items-center gap-3 px-3 py-2 text-left text-sm hover:bg-zinc-900 focus-visible:outline-none focus-visible:bg-zinc-900"
+                     onClick={() => goAnime(it.Id)}
+                   >
                     <span className="line-clamp-1 flex-1 text-zinc-100">{it.Name}</span>
                     <span className="text-xs text-zinc-500">Open</span>
                   </button>
@@ -162,3 +163,7 @@ export function SearchBar({ className = '' }) {
     </div>
   );
 }
+
+SearchBar.propTypes = {
+  className: PropTypes.string,
+};
