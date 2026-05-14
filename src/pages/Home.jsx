@@ -156,7 +156,7 @@ export function Home() {
       </section>
 
       <section className="space-y-3">
-        <div className="flex items-end justify-between gap-4">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
           <div>
             <h2 className="text-lg font-semibold text-white">Top rated</h2>
             <p className="text-sm text-zinc-500">Curated by community scores</p>
@@ -165,7 +165,7 @@ export function Home() {
              type="button"
              disabled={topLoading || !topHasMore}
              onClick={() => loadTop(topPage + 1, true)}
-             className="rounded-xl border border-surface-border bg-surface-raised px-3 py-2 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+             className="hidden sm:block rounded-xl border border-surface-border bg-surface-raised px-3 py-2 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
            >
              Load more
            </button>
@@ -173,24 +173,34 @@ export function Home() {
 
         {topError ? (
           <UiState
-            title="Couldn’t load top titles"
+            title="Couldn't load top titles"
             description="The ratings feed may be temporarily unavailable."
             onRetry={() => loadTop(1, false)}
           />
         ) : topLoading && topRated.length === 0 ? (
            <SkeletonCard />
          ) : (
-           <div className="grid grid-cols-2 gap-3 sm:flex sm:gap-4 sm:overflow-x-auto sm:pb-2 sm:scrollbar-thin sm:snap-x sm:snap-mandatory">
-             {topRated.map((a) => (
-               <AnimeCard
-                 key={a._id}
-                 id={a._id}
-                 title={a.Name}
-                 image={a.ImagePath || a.Cover || a.Image}
-                 malScore={a.MALScore}
-               />
-             ))}
-           </div>
+           <>
+             <div className="grid grid-cols-2 gap-3 sm:flex sm:gap-4 sm:overflow-x-auto sm:pb-2 sm:scrollbar-thin sm:snap-x sm:snap-mandatory">
+               {topRated.map((a) => (
+                 <AnimeCard
+                   key={a._id}
+                   id={a._id}
+                   title={a.Name}
+                   image={a.ImagePath || a.Cover || a.Image}
+                   malScore={a.MALScore}
+                 />
+               ))}
+             </div>
+             <button
+               type="button"
+               disabled={topLoading || !topHasMore}
+               onClick={() => loadTop(topPage + 1, true)}
+               className="sm:hidden w-full rounded-xl border border-surface-border bg-surface-raised px-3 py-2 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+             >
+               Load more
+             </button>
+           </>
          )}
       </section>
 
@@ -202,48 +212,58 @@ export function Home() {
         <GenrePills activeGenre={activeGenre} onSelect={onSelectGenre} />
 
         {activeGenre ? (
-          <div className="space-y-3">
-            <div className="flex items-end justify-between gap-4">
-              <h3 className="text-sm font-semibold text-zinc-200">{activeGenre}</h3>
-              <div className="flex items-center gap-2">
-               <Link
-                   to={`/genre/${encodeURIComponent(activeGenre)}?page=1`}
-                   className="text-xs font-semibold text-accent-muted hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded px-1"
-                 >
-                   Open grid
-                 </Link>
-                 <button
-                   type="button"
-                   disabled={genreLoading || !genreHasMore}
-                   onClick={() => loadGenre(activeGenre, genrePage + 1, true)}
-                   className="rounded-xl border border-surface-border bg-surface-raised px-3 py-2 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                 >
-                   More
-                 </button>
-              </div>
-            </div>
-
-            {genreError ? (
-              <UiState
-                title="Genre browse failed"
-                description="Try another genre or retry."
-                onRetry={() => loadGenre(activeGenre, 1, false)}
-              />
-            ) : genreLoading && genreItems.length === 0 ? (
-               <SkeletonCard count={6} />
-             ) : (
-               <div className="grid grid-cols-2 gap-3 sm:flex sm:gap-4 sm:overflow-x-auto sm:pb-2 sm:scrollbar-thin sm:snap-x sm:snap-mandatory">
-                 {genreItems.map((a) => (
-                   <AnimeCard
-                     key={a._id}
-                     id={a._id}
-                     title={a.Name}
-                     image={a.ImagePath || a.Image}
-                     malScore={a.MALScore}
-                   />
-                 ))}
+           <div className="space-y-3">
+             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
+               <h3 className="text-sm font-semibold text-zinc-200">{activeGenre}</h3>
+               <div className="flex items-center gap-2">
+                <Link
+                    to={`/genre/${encodeURIComponent(activeGenre)}?page=1`}
+                    className="text-xs font-semibold text-accent-muted hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded px-1"
+                  >
+                    Open grid
+                  </Link>
+                  <button
+                    type="button"
+                    disabled={genreLoading || !genreHasMore}
+                    onClick={() => loadGenre(activeGenre, genrePage + 1, true)}
+                    className="hidden sm:block rounded-xl border border-surface-border bg-surface-raised px-3 py-2 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  >
+                    More
+                  </button>
                </div>
-             )}
+             </div>
+
+             {genreError ? (
+               <UiState
+                 title="Genre browse failed"
+                 description="Try another genre or retry."
+                 onRetry={() => loadGenre(activeGenre, 1, false)}
+               />
+             ) : genreLoading && genreItems.length === 0 ? (
+                <SkeletonCard count={6} />
+              ) : (
+                <>
+                  <div className="grid grid-cols-2 gap-3 sm:flex sm:gap-4 sm:overflow-x-auto sm:pb-2 sm:scrollbar-thin sm:snap-x sm:snap-mandatory">
+                    {genreItems.map((a) => (
+                      <AnimeCard
+                        key={a._id}
+                        id={a._id}
+                        title={a.Name}
+                        image={a.ImagePath || a.Image}
+                        malScore={a.MALScore}
+                      />
+                    ))}
+                  </div>
+                  <button
+                    type="button"
+                    disabled={genreLoading || !genreHasMore}
+                    onClick={() => loadGenre(activeGenre, genrePage + 1, true)}
+                    className="sm:hidden w-full rounded-xl border border-surface-border bg-surface-raised px-3 py-2 text-xs font-semibold text-zinc-200 hover:border-zinc-600 disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  >
+                    More
+                  </button>
+                </>
+              )}
           </div>
         ) : null}
       </section>
