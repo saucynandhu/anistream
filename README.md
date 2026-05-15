@@ -65,6 +65,21 @@ Pushes and pull requests targeting **`main`** or **`master`** run **`npm ci`** a
 
 **In-app dev notes:** The UI exposes **`/dev`** (linked from the footer) with a concise technical summary: stack, proxy, env, and known API quirks — useful when sharing the live site without opening the repo.
 
+## Season Grouping
+
+AniStream automatically groups related seasons, sequels, and specials using the **AniList GraphQL API**.
+
+### How it works:
+1. The app retrieves the **MyAnimeList (MAL) ID** from the AniPub detail response.
+2. It queries **AniList** for the full relation tree (filtered for sequels, prequels, side stories, etc.).
+3. Related titles are sorted chronologically by their release date.
+4. For each related entry, the app attempts to resolve a corresponding **AniStream ID** by searching the AniPub catalog.
+5. If a match is found, the season card links internally; otherwise, it links directly to the AniList entry.
+
+### Known Limitations:
+- **ID Resolution:** AniStream ID resolution is best-effort via title search. Titles that differ significantly between AniList and AniPub (e.g., alternate romanizations) may fail to resolve internally and will link out to AniList instead.
+- **Rate Limiting:** Queries to AniList are rate-limited to 90 requests per minute. The app uses an internal 700ms request queue to stay within these limits.
+
 ## Scripts
 
 - `npm run dev` — Vite dev server (includes `/anipub-api` proxy)

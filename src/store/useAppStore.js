@@ -58,6 +58,16 @@ export const useAppStore = create(
        * @param {any[]} items
        */
       setSearchCache: (items) => set({ searchCache: items }),
+
+      seasonCache: {},
+      /**
+       * @param {number|string} malId
+       * @param {any} data
+       */
+      setSeasonCache: (malId, data) =>
+        set((s) => ({
+          seasonCache: { ...s.seasonCache, [String(malId)]: data },
+        })),
     }),
     {
       name: 'anistream-store',

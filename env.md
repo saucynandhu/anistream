@@ -21,6 +21,19 @@ If you deploy to Vercel with the included **`vercel.json`**, you normally **do n
 
 ---
 
+## External APIs
+
+### AniList GraphQL API
+
+AniStream uses the AniList GraphQL API for season grouping.
+
+- **URL:** `https://graphql.anilist.co` (Proxied via `/anilist-api` in development)
+- **Authentication:** None / Public
+- **Rate Limit:** 90 requests per minute.
+- **Usage:** Used to fetch relation trees (sequels/prequels) cross-referenced via MAL IDs.
+
+---
+
 ## Currently used variables
 
 ### `VITE_API_BASE`

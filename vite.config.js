@@ -18,6 +18,13 @@ const anipubProxy = {
   rewrite: (path) => path.replace(/^\/anipub-api/, ''),
 };
 
+const anilistProxy = {
+  target: 'https://graphql.anilist.co',
+  changeOrigin: true,
+  secure: true,
+  rewrite: (path) => path.replace(/^\/anilist-api/, ''),
+};
+
 /**
  * @returns {import('vite').UserConfig}
  */
@@ -26,11 +33,13 @@ export default defineConfig({
   server: {
     proxy: {
       '/anipub-api': anipubProxy,
+      '/anilist-api': anilistProxy,
     },
   },
   preview: {
     proxy: {
       '/anipub-api': anipubProxy,
+      '/anilist-api': anilistProxy,
     },
   },
 });

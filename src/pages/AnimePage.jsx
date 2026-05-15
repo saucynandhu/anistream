@@ -17,6 +17,7 @@ import {
   resolveMediaUrl,
 } from '../lib/api';
 import { EpisodeList } from '../components/EpisodeList.jsx';
+import { SeasonStrip } from '../components/SeasonStrip.jsx';
 import { UiState } from '../components/UiState.jsx';
 import { useAppStore } from '../store/useAppStore.js';
 import { getLastWatchedEpisode } from '../lib/lastWatched.js';
@@ -235,6 +236,7 @@ export function AnimePage() {
         </div>
 
         <div className="order-1 space-y-4 lg:order-2">
+          <SeasonStrip malId={detail.MALID} />
           {id ? (
             <EpisodeList animeId={id} episodeCount={episodeCount} initialHighlight={lastWatched} />
           ) : null}

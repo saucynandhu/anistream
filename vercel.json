@@ -5,6 +5,10 @@
       "destination": "https://anipub.xyz/:path*"
     },
     {
+      "source": "/anilist-api/:path*",
+      "destination": "https://graphql.anilist.co/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
