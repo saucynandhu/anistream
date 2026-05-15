@@ -13,7 +13,7 @@ import Fuse from 'fuse.js';
  */
 const DEFAULT_OPTIONS = {
   keys: ['Name', 'name'],
-  threshold: 0.4, // 0.0 is exact match, 1.0 matches everything
+  threshold: 0.45, // Increased from 0.4 to 0.45 to better handle misspelled queries like "attac on titan" vs "Attack on Titan"
   location: 0,
   distance: 100,
   minMatchCharLength: 2,

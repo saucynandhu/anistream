@@ -52,6 +52,12 @@ export const useAppStore = create(
        */
       setCurrentlyPlaying: (animeId, episode) =>
         set({ currentlyPlaying: { animeId, episode } }),
+
+      searchCache: [],
+      /**
+       * @param {any[]} items
+       */
+      setSearchCache: (items) => set({ searchCache: items }),
     }),
     {
       name: 'anistream-store',
