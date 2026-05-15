@@ -162,7 +162,7 @@ export function AnimePage() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
-        <div className="space-y-6">
+        <div className="order-2 space-y-6 lg:order-1">
           <section className="rounded-2xl border border-surface-border bg-surface-raised p-4">
             <h2 className="text-sm font-semibold text-zinc-200">Synopsis</h2>
             <p className="mt-4 whitespace-pre-line text-sm leading-relaxed text-zinc-400">
@@ -234,7 +234,7 @@ export function AnimePage() {
           </section>
         </div>
 
-        <div className="space-y-4">
+        <div className="order-1 space-y-4 lg:order-2">
           {id ? (
             <EpisodeList animeId={id} episodeCount={episodeCount} initialHighlight={lastWatched} />
           ) : null}
