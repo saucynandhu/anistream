@@ -27,13 +27,13 @@ function AnimeCardComponent({ id, title, image, malScore }) {
       : String(malScore);
 
   return (
-    <article className="w-[150px] shrink-0 sm:w-[170px] h-[300px] sm:h-[330px]">
+    <article className="w-full shrink-0 sm:w-[170px] h-auto sm:h-[330px]">
       <Link
         to={`/anime/${id}`}
         className="group flex flex-col h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 rounded-xl"
       >
         <div className="relative flex-1 overflow-hidden rounded-t-xl border border-b-0 border-surface-border bg-surface-raised shadow-card transition duration-300 will-change-transform group-hover:-translate-y-0.5 group-hover:scale-[1.02] group-hover:shadow-[0_16px_50px_rgba(0,0,0,0.55)]">
-          <div className="aspect-[2/3] w-full h-full overflow-hidden bg-zinc-900">
+          <div className="aspect-[2/3] w-full bg-zinc-900 sm:h-full">
             {src ? (
               <img
                 src={src}
