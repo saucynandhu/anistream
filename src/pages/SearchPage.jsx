@@ -11,6 +11,7 @@ import { useSearchParams } from 'react-router-dom';
 import { fetchSearchAll } from '../lib/api';
 import { AnimeCard } from '../components/AnimeCard.jsx';
 import { UiState } from '../components/UiState.jsx';
+import { fuzzySearch } from '../lib/fuzzy';
 
 /**
  * @returns {JSX.Element}
@@ -42,7 +43,8 @@ export function SearchPage() {
     fetchSearchAll(q, page)
       .then((data) => {
         if (cancelled) return;
-        setItems(Array.isArray(data?.AniData) ? data.AniData : []);
+        const raw = Array.isArray(data?.AniData) ? data.AniData : [];
+        setItems(fuzzySearch(raw, q));
       })
       .catch((e) => {
         if (cancelled) return;

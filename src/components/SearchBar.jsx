@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchSearchSuggestions } from '../lib/api';
 import { useAppStore } from '../store/useAppStore';
+import { fuzzySearch } from '../lib/fuzzy';
 
 /**
  * @param {Object} props
@@ -58,7 +59,9 @@ export function SearchBar({ className = '' }) {
       fetchSearchSuggestions(q)
         .then((data) => {
           if (cancelled) return;
-          setItems(Array.isArray(data) ? data.slice(0, 8) : []);
+          const raw = Array.isArray(data) ? data : [];
+          const fuzzyResults = fuzzySearch(raw, q);
+          setItems(fuzzyResults.slice(0, 8));
         })
         .catch(() => {
           if (cancelled) return;
