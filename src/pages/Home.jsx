@@ -13,6 +13,7 @@ import { AnimeCard } from '../components/AnimeCard.jsx';
 import { GenrePills } from '../components/GenrePills.jsx';
 import { SkeletonCard } from '../components/SkeletonCard.jsx';
 import { UiState } from '../components/UiState.jsx';
+import { ContinueWatchingRow } from '../components/ContinueWatchingRow.jsx';
 
 /**
  * Picks a random element from a non-empty array.
@@ -154,6 +155,8 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      <ContinueWatchingRow />
 
       <section className="space-y-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4">

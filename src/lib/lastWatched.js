@@ -51,3 +51,44 @@ export function setLastWatchedEpisode(animeId, episode) {
     // ignore quota / privacy mode
   }
 }
+
+/**
+ * Retrieves all watch history from localStorage.
+ * Note: No timestamps are stored in the current logic, so sorting is best-effort.
+ *
+ * @returns {Array<{ animeId: string, episode: number }>}
+ * @sideeffects reads localStorage
+ */
+export function getAllWatchedHistory() {
+  const history = [];
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith(PREFIX)) {
+        const animeId = key.slice(PREFIX.length);
+        const episode = getLastWatchedEpisode(animeId);
+        if (episode !== null) {
+          history.push({ animeId, episode });
+        }
+      }
+    }
+  } catch {
+    // ignore
+  }
+  return history;
+}
+
+/**
+ * Removes a specific anime from watch history.
+ *
+ * @param {string|number} animeId
+ * @returns {void}
+ * @sideeffects writes localStorage
+ */
+export function removeWatchedHistory(animeId) {
+  try {
+    localStorage.removeItem(keyFor(animeId));
+  } catch {
+    // ignore
+  }
+}
